@@ -2,7 +2,7 @@
 <!-- I have shamelessly copied this from jmcglone at http://jmcglone.com/guides/github-pages/ -->
 <html>
 	<head>
-		<title> Manuel Jiménez-Martín </title>
+		<title> {{ page.title }} </title>
 		<!-- Comments in html are kind of ugly -->
 		<!-- Link to main css style sheet -->
 		<link rel="stylesheet" type="text/css" href="/css/main.css">
@@ -16,12 +16,14 @@
         		<li><a href="/blog">Blog</a></li>
     		</ul>
 		</nav>
+		
+		<!-- CONTAINER FOR THE CONTENT -->
 		<div class="container">
-    		<div class="blurb">
-        		<h1>Some notebooks I wrote</h1>
-				<p>(this place is under construction). <!--<a href="/about">Read more about my life...</a>--> </p>
-    		</div><!-- /.blurb -->
-		</div><!-- /.container -->
+			
+		{{ content }}
+			
+		</div> <!-- /.container -->
+
 		<footer>
     		<ul>
         		<li><a href="mailto:manuel.jimenez@fisfun.uned.com">email</a></li>
