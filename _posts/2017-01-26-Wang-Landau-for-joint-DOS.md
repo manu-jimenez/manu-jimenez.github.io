@@ -1,3 +1,8 @@
+---
+layout: post
+title: "Joint density of states by Wang-Landau multicanonical sampling"
+date: 2017-01-25
+---
 
 ***
 
