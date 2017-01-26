@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Manu Jiménez first blog post"
+title: "My first blog post"
 date: 2017-01-25
 ---
 
