@@ -1,10 +1,9 @@
 ---
 layout: post
-title: "Joint density of states by Wang-Landau multicanonical sampling"
+title: "Wang-Landau algorithm for joint density of states"
 date: 2017-01-25
 ---
 
-***
 
 In this notebook I provide an implementation of a Wang-Landau algorithm for computing a bivariate joint density of states (DOS) in an integer valued configuration space.
 
