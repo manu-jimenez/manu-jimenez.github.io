@@ -1,2 +1,4 @@
-	name: Manuel Jiménez-Martín webpage
-  markdown: kramdown
+name: Manuel Jimenez-Martin webpage
+markdown: kramdown
+
+theme: jekyll-theme-slate
