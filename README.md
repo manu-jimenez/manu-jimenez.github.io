@@ -5,6 +5,9 @@ Building following instructions from:
 
     http://jmcglone.com/guides/github-pages/
 
+    https://guides.github.com/features/pages/
 
     https://jekyllrb.com/
+    
+    
     
