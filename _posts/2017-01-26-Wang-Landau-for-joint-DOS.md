@@ -13,7 +13,7 @@ I will model the Reciprocity Survey (RS) dataset from [[2]((http://journals.plos
 I will sample sample the configuration space with a Wang-Landau algorithm [[3](http://journals.aps.org/prl/abstract/10.1103/PhysRevLett.86.2050)] in order to compute the joint density of states in the macrostate space.
 
 
-```python
+{% highlight python %}
 # NECESSARY IMPORTS
 import numpy as np
 import pandas as pd
@@ -23,7 +23,8 @@ import random
 %matplotlib inline
 import matplotlib as mpl
 from matplotlib import pyplot as plt
-```
+{% endhighlight %}
+
 
 ## 1- Dataset description and import
 
