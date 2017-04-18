@@ -10,21 +10,10 @@
 
     <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
 
-    <title>{{ site.title | default: site.github.repository_name }}</title>
+    <title>{{ site.title | default: name }}</title>  <!-- site.github.repository_name -->
   </head>
 
   <body>
-    
-    <!-- I have added this so I can link to my posts -->
-    <nav>
-    		<ul>
-        		<li><a href="/">Home</a></li>          <!-- what is this? -->
-	        	<li><a href="/about">About</a></li>
-        		<!-- <li><a href="/cv">CV</a></li>     Not yet, TO DO how do I host a downloadable file? -->
-        		<li><a href="/blog">Blog</a></li>
-    		</ul>
-		</nav>
-    <!-- this is where my edition ends -->
     
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
@@ -43,6 +32,20 @@
         </header>
     </div>
 
+    <!-- NAVIGATION BAR -->
+	  
+    <nav>
+    		<ul>
+        		<li><a href="/">Home</a></li>          <!-- what is this? -->
+	        	<li><a href="/about">About</a></li>
+        		<!-- <li><a href="/cv">CV</a></li>     Not yet, TO DO how do I host a downloadable file? -->
+        		<li><a href="/blog">Blog</a></li>
+    		</ul>
+    </nav>
+	  
+    <!-- this is where my edition ends -->
+	  
+	  
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
