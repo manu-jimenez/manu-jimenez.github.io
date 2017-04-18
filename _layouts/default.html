@@ -1,5 +1,5 @@
 ---
-title: Manuel Jimenez-Martin webpage
+my_var: Manuel Jimenez-Martin webpage
 ---
 
 <!DOCTYPE html>
@@ -9,11 +9,11 @@ title: Manuel Jimenez-Martin webpage
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
-    <meta name="description" content="{{ site.title | default: page.name }} : {{ site.description | default: site.github.project_tagline }}">
+    <meta name="description" content="{{ site.title | default: page.my_var }} : {{ site.description | default: site.github.project_tagline }}">
 
     <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
 
-    <title>{{ site.title | default: page.name }}</title>  <!-- site.github.repository_name -->
+    <title>{{ site.title | default: page.my_var }}</title>  <!-- site.github.repository_name -->
   </head>
 
   <body>
@@ -23,7 +23,7 @@ title: Manuel Jimenez-Martin webpage
         <header class="inner">
           <a id="forkme_banner" href="{{ site.github.repository_url }}">View on GitHub</a>
 
-          <h1 id="project_title">{{ site.title | default: page.name }}</h1>  <!-- site.github.repository_ -->
+          <h1 id="project_title">{{ site.title | default: page.my_var }}</h1>  <!-- site.github.repository_ -->
           <h2 id="project_tagline">{{ site.description | default: site.github.project_tagline }}</h2>
 
 	<section id="navigation_bar">
