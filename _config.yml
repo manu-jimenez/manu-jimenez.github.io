@@ -3,3 +3,5 @@ description: Keeping track of my seminars and coding projects.
 
 markdown: kramdown
 highlighter: rouge
+
+theme: jekyll-theme-slate
