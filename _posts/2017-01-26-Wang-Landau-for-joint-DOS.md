@@ -7,16 +7,10 @@ date: 2017-01-25
 
 In this notebook I provide an implementation of a Wang-Landau algorithm for computing a bivariate joint density of states (DOS) in an integer valued configuration space.
 
-I will make use of the Reciprocity Survey (RS) [dataset](http://journals.plos.org/plosone/article/file?type=supplementary&id=info:doi/10.1371/journal.pone.0151588.s002) from:
-
-> Almaatouq A, Radaelli L, Pentland A and Shmueli E (2016) *Are You Your Friends’ Friend? Poor Perception of Friendship Ties Limits the Ability to Promote Behavioral Change.* PLOS ONE 11(3): e0151588. doi:10.1371/journal.pone.0151588
+I will model the Reciprocity Survey (RS) dataset from [[2]((http://journals.plos.org/plosone/article/file?type=supplementary&id=info:doi/10.1371/journal.pone.0151588.s002))], by fitting it to the grand-canonical ensemble from [[1](https://arxiv.org/abs/1701.07428)].
 
 
-I will model the dataset with the grand-canonical ensemble from:
-> Manuel Jiménez-Martı́n, Javier Rodrı́guez-Laguna and Elka Korutcheva (2017)  *Null models for social hierarchical structure.*
-
-I will sample sample the configuration space with a Wang-Landau algorithm in order to compute the joint density of states in the macrostate space.
-> Fugao Wang and D. P. Landau (2001) *Efficient, Multiple-Range Random Walk Algorithm to Calculate the Density of States.* Phys. Rev. Lett. 86, 2050. [(Link)](http://journals.aps.org/prl/abstract/10.1103/PhysRevLett.86.2050)
+I will sample sample the configuration space with a Wang-Landau algorithm [[3](http://journals.aps.org/prl/abstract/10.1103/PhysRevLett.86.2050)] in order to compute the joint density of states in the macrostate space.
 
 
 ```python
@@ -42,7 +36,8 @@ Let us import the dataset, which I have downloaded to my folder ´~/Downloads´.
 
 ```python
 df = pd.read_csv(open('/home/mjimenez/Downloads/journal.pone.0151588.s002.CSV','r'))
-df.drop(['expected_score'], axis=1, inplace=True)  # we will only use the reported score
+# we will only use the reported score
+df.drop(['expected_score'], axis=1, inplace=True)  
 df.head()
 ```
 
@@ -500,3 +495,13 @@ ax.text(10, 200, r'$\ln\,P\,(k,s)$', fontsize=16)
 
 
 The green cross marks the $\langle k \rangle$ and $\langle s \rangle$ RS empirical averages and the red diamods represent the $84$ individual ego-networks. We have fitted the grand-canonical ensemble such that the expected $k$ and $s$ coincide with the empirical averages. The blue-shaded regions are the contour plot of the logarithmic density of states. Finally, the black lines delimit domain for the allowed configurations: $s\geq k$ and $s\leq 5k$.
+
+
+## References
+
+[[1](https://arxiv.org/abs/1701.07428)] *A null model for Dunbar's circles*. Manuel Jiménez-Martín, Ignacio Tamarit, Javier Rodríguez-Laguna, Elka Korutcheva, (pre-print) arXiv:1701.07428, (2017).
+
+[[2](http://journals.plos.org/plosone/article/file?type=supplementary&id=info:doi/10.1371/journal.pone.0151588.s002)] *Are You Your Friends’ Friend? Poor Perception of Friendship Ties Limits the Ability to Promote Behavioral Change.* Almaatouq A, Radaelli L, Pentland A and Shmueli E. PLOS ONE 11(3), (2016).
+
+[[3]((http://journals.aps.org/prl/abstract/10.1103/PhysRevLett.86.2050))] Fugao Wang and D. P. Landau (2001) *Efficient, Multiple-Range Random Walk Algorithm to Calculate the Density of States.* Phys. Rev. Lett. 86, 2050, (2001).
+
