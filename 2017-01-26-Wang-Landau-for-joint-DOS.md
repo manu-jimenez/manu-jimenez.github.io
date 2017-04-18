@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: "Wang-Landau algorithm for joint density of states"
 date: 2017-01-25
 ---
