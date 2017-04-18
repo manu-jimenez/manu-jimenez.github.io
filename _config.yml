@@ -2,3 +2,4 @@ name: Manuel Jimenez-Martin webpage
 markdown: kramdown
 theme: jekyll-theme-slate
 description: Keeping track of my seminars and coding projects.
+highlighter: rouge
