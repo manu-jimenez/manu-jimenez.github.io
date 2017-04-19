@@ -51,14 +51,16 @@
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        {% if site.github.is_project_page %}
+        
+	{% if site.github.is_project_page %}
         <p class="copyright">{{ site.title | default: site.github.repository_name }} maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
         {% endif %}
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+        
+	<p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
 	<!-- I have added this -->
     		<ul>
-        		<li><a href="mailto:manuel.jimenez@fisfun.uned.com">email</a></li>
-        		<li><a href="https://github.com/manu-jimenez/web">repo</a></li>
+        		<a href="mailto:manuel.jimenez@fisfun.uned.com">email</a>
+        		<a href="https://github.com/manu-jimenez/web">repo</a>
 		</ul>
 	<!-- I have added this -->
       </footer>
