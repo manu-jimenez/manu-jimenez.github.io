@@ -184,17 +184,13 @@ Here, \\( \rho(k,s) \\) is the *zero-temperature* density of states (0-DOS), tha
 
 In practice, we start with a uniform \\( \rho_0(k,s) \\) and an empty histogram \\( h(k,s) \\). We perform a random walk on the configuration (microstate) space and every iteration we update the 0-DOS and the histogram as follows.
 
-$$\rho_i(k,s) = \rho_i(k,s) \cdot f_i, \qquad h_i(k,s) = h_i(k,s) + 1$$
+$$\rho_i(k,s) = \rho_i(k,s) \cdot f_i \qquad h_i(k,s) = h_i(k,s) + 1$$
 
 Where \\( f \\) is a parameter larger than \\( 1 \\). During the first walk, we perform a long run and define the **valid** domain as those values of \\( k \\)-\\( s \\) that have been visited at least once. We then continue the walk, and check whether the histogram is sufficiently **flat** *(for instance, if at least 99% of the **valid** histogram entries are higher than \\( 0.8\langle h \rangle \\), where \\( \langle h \rangle \\) is the histogram average)*.
 
-If the histogram is sufficiently flat, we reset it, update the parameter \\( f \\) and start a new walk. The algorithm now should perform finer updates to the 0-DOS. Thus, the parameter \\( f \\) should decrease following a monotonically decreasing mapping such as 
+If the histogram is sufficiently flat, we reset it, update the parameter \\( f \\) and start a new walk. The algorithm now should perform finer updates to the 0-DOS. Thus, the parameter \\( f \\) should decrease following a monotonically decreasing mapping. We have implemented the following update scheme: 
 
-$$\rho_{i+1} = \rho_{i}$$
-
-$$h_{i+1} = \text{const}$$ 
-
-$$f_{i+1} = \sqrt{f_i}$$
+$$f_{i+1} = \sqrt{f_i}  \qquad  \rho_{i+1} = \rho_{i} \qquad h_{i+1} = \text{const}$$
 
 After \\( n \\) rounds, the update parameter should be approximately 1. For instance, starting at   \\( f_0=e^1 \\), after \\( 10 \\) rounds the update parameter is \\( f_0^{0.5^{10}}\approx 1.001 \\).
 
