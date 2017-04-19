@@ -7,10 +7,10 @@ date: 2017-01-25
 
 In this notebook I provide an implementation of a Wang-Landau algorithm for computing a bivariate joint density of states (DOS) in an integer valued configuration space.
 
-I will model the Reciprocity Survey (RS) dataset from [[2]((http://journals.plos.org/plosone/article/file?type=supplementary&id=info:doi/10.1371/journal.pone.0151588.s002))], by fitting it to the grand-canonical ensemble from [[1](https://arxiv.org/abs/1701.07428)].
+I will model the Reciprocity Survey (RS) dataset from [[2](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0151588)], by fitting it to the grand-canonical ensemble from [[1](https://arxiv.org/abs/1701.07428)].
 
 
-I will sample sample the configuration space with a Wang-Landau algorithm [[3](http://journals.aps.org/prl/abstract/10.1103/PhysRevLett.86.2050)] in order to compute the joint density of states in the macrostate space.
+I will sample the configuration space with a Wang-Landau algorithm [[3](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.86.2050)] in order to compute the joint density of states in the macrostate space.
 
 ```python
 # NECESSARY IMPORTS
@@ -479,18 +479,9 @@ ax.xaxis.label.set_size(18)
 ax.text(10, 200, r'$\ln\,P\,(k,s)$', fontsize=16)
 ```
 
-    /home/mjimenez/anaconda3/envs/py35/lib/python3.5/site-packages/ipykernel/__main__.py:21: RuntimeWarning: divide by zero encountered in log
 
 
-
-
-
-    <matplotlib.text.Text at 0x7fa6e8842e10>
-
-
-
-
-![png](output_16_2.png)
+![](_posts/output_16_2.png)
 
 
 The green cross marks the $\langle k \rangle$ and $\langle s \rangle$ RS empirical averages and the red diamods represent the $84$ individual ego-networks. We have fitted the grand-canonical ensemble such that the expected $k$ and $s$ coincide with the empirical averages. The blue-shaded regions are the contour plot of the logarithmic density of states. Finally, the black lines delimit domain for the allowed configurations: $s\geq k$ and $s\leq 5k$.
@@ -500,7 +491,7 @@ The green cross marks the $\langle k \rangle$ and $\langle s \rangle$ RS empiric
 
 [[1](https://arxiv.org/abs/1701.07428)] *A null model for Dunbar's circles*. Manuel Jiménez-Martín, Ignacio Tamarit, Javier Rodríguez-Laguna, Elka Korutcheva, (pre-print) arXiv:1701.07428, (2017).
 
-[[2](http://journals.plos.org/plosone/article/file?type=supplementary&id=info:doi/10.1371/journal.pone.0151588.s002)] *Are You Your Friends’ Friend? Poor Perception of Friendship Ties Limits the Ability to Promote Behavioral Change.* Almaatouq A, Radaelli L, Pentland A and Shmueli E. PLOS ONE 11(3), (2016).
+[[2](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0151588)] *Are You Your Friends’ Friend? Poor Perception of Friendship Ties Limits the Ability to Promote Behavioral Change.* Almaatouq A, Radaelli L, Pentland A and Shmueli E. PLOS ONE 11(3), (2016).
 
-[[3]((http://journals.aps.org/prl/abstract/10.1103/PhysRevLett.86.2050))] Fugao Wang and D. P. Landau (2001) *Efficient, Multiple-Range Random Walk Algorithm to Calculate the Density of States.* Phys. Rev. Lett. 86, 2050, (2001).
+[[3](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.86.2050)] Fugao Wang and D. P. Landau (2001) *Efficient, Multiple-Range Random Walk Algorithm to Calculate the Density of States.* Phys. Rev. Lett. 86, 2050, (2001).
 
