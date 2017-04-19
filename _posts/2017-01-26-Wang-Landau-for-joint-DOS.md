@@ -481,7 +481,7 @@ ax.text(10, 200, r'$\ln\,P\,(k,s)$', fontsize=16)
 
 
 
-![](https://github.com/manu-jimenez/manu-jimenez.github.io/tree/master/_posts/output_16_2.png)
+![png](https://github.com/manu-jimenez/manu-jimenez.github.io/blob/master/_posts/output_16_2.png?raw=true)
 
 
 The green cross marks the $\langle k \rangle$ and $\langle s \rangle$ RS empirical averages and the red diamods represent the $84$ individual ego-networks. We have fitted the grand-canonical ensemble such that the expected $k$ and $s$ coincide with the empirical averages. The blue-shaded regions are the contour plot of the logarithmic density of states. Finally, the black lines delimit domain for the allowed configurations: $s\geq k$ and $s\leq 5k$.
