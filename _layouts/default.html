@@ -9,7 +9,11 @@
 
     <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
 
-    <title>{{ site.name | default: site.github.repository_name }}</title>  
+    <title>{{ site.name | default: site.github.repository_name }}</title> 
+    <!-- MathJax comes here -->
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
   </head>
 
   <body>
@@ -61,10 +65,8 @@
 		Published with <a href="https://pages.github.com">GitHub Pages</a>
 		<!-- Now horizontal space (flushright -->
 		<span style="float:right;">
-			<ul>
-        			<a href="mailto:manuel.jimenez@fisfun.uned.com">email</a>
-        			<a href="https://github.com/manu-jimenez/web">repo</a>
-			</ul>
+        		<a href="mailto:manuel.jimenez@fisfun.uned.com">email</a>
+        		<a href="https://github.com/manu-jimenez/web">repo</a>
 		</span>
 	</p>	      
 	<!-- end of NEW (substitute with first comment block from SCRAPS -->
@@ -86,6 +88,9 @@
 </html>
 
 
+
+
+
 <!-- SCRAPS -->
 {% comment %}
 	<!-- this was here before -->
@@ -96,6 +101,13 @@
         		<a href="https://github.com/manu-jimenez/web">repo</a>
 		</ul>
 	<!-- I have added this -->
+{% endcomment %}
+
+{% comment %}
+    <!-- ANOTHER MATHJAX SCRIPT, older from 2012 -->
+    <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
 {% endcomment %}
 
 {% comment %}
