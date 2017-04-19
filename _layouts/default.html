@@ -38,18 +38,7 @@
         </header>
     </div>
 	  
-{% comment %}
-    <!-- NAVIGATION BAR -->
-    <div id="header_wrap" class="outer">
-      <header class="inner" >
-        		<li><a href="/">Home</a></li>          <!-- what is this? -->
-	        	<li><a href="/about">About</a></li>
-        		<!-- <li><a href="/cv">CV</a></li>     Not yet, TO DO how do I host a downloadable file? -->
-        		<li><a href="/blog">Blog</a></li>
-      </header>
-    </div>
-    <!-- this is where my edition ends -->
-{% endcomment %}
+
 
 	   
     <!-- MAIN CONTENT -->
@@ -66,6 +55,12 @@
         <p class="copyright">{{ site.title | default: site.github.repository_name }} maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
         {% endif %}
         <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+	<!-- I have added this -->
+    		<ul>
+        		<li><a href="mailto:manuel.jimenez@fisfun.uned.com">email</a></li>
+        		<li><a href="https://github.com/manu-jimenez/web">repo</a></li>
+		</ul>
+	<!-- I have added this -->
       </footer>
     </div>
 
@@ -81,3 +76,18 @@
     {% endif %}
   </body>
 </html>
+
+
+<!-- SCRAPS -->
+{% comment %}
+    <!-- NAVIGATION BAR -->
+    <div id="header_wrap" class="outer">
+      <header class="inner" >
+        		<li><a href="/">Home</a></li>          <!-- what is this? -->
+	        	<li><a href="/about">About</a></li>
+        		<!-- <li><a href="/cv">CV</a></li>     Not yet, TO DO how do I host a downloadable file? -->
+        		<li><a href="/blog">Blog</a></li>
+      </header>
+    </div>
+    <!-- this is where my edition ends -->
+{% endcomment %}
