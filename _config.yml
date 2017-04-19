@@ -5,3 +5,5 @@ markdown: kramdown
 highlighter: rouge
 
 theme: jekyll-theme-slate
+
+gems: pygments.rb
