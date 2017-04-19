@@ -25,9 +25,9 @@ from matplotlib import pyplot as plt
 
 ### 1- Dataset description and import
 
-We have fitted the grand-canonical ensemble to the Reciprocity Survey (RS) dataset. In this experiment, a total of \(N = 84\) under-graduate students were asked to score their relationship with each of the other participants in a scale from 0 to 5, where 0 meant no-relationship, and 1 to 5 represented increasing degree of friendship. 
+We have fitted the grand-canonical ensemble to the Reciprocity Survey (RS) dataset. In this experiment, a total of \\( N = 84 \\) under-graduate students were asked to score their relationship with each of the other participants in a scale from 0 to 5, where 0 meant no-relationship, and 1 to 5 represented increasing degree of friendship. 
 
-\)We have considered the zero weight as a no-link of cost 0. The remaining layers costs are \([s_5,s_4,s_3,s_2,s_1]=\{1,2,3,4,5\}$. Then, each participants ego-network is described by a vector whose elements are the weight of their reported relationship with the other participants (the network is directed). 
+ \\)We have considered the zero weight as a no-link of cost 0. The remaining layers costs are \\( [s_5,s_4,s_3,s_2,s_1]=\{1,2,3,4,5\}$. Then, each participants ego-network is described by a vector whose elements are the weight of their reported relationship with the other participants (the network is directed). 
 
 Let us import the dataset, which I have downloaded to my folder ´~/Downloads´. Then, let us extract the corresponding layer configurations and macrostates. 
 
@@ -88,22 +88,22 @@ df.head()
 
 We can distinguish three deacreasingly detailed representations for the ego-networks:
 
-- The ego-networks are the **microstates** of the system. Six possible weights and \(83\) participants make the number of microstates equal to $6^{83}$. 
+- The ego-networks are the **microstates** of the system. Six possible weights and \\( 83 \\) participants make the number of microstates equal to $6^{83}$. 
 
 $$\mathbf{s}_k = [\omega_1,\dots,\omega_{k-1},\omega_{k+1},\dots,\omega_N]\qquad \omega_j\in=[s_5,s_4,s_3,s_2,s_1]$$
 
 - The grand-canonical ensemble assigns the same probability to configurations with equal **layer degrees**,
- \(k_r\), that is the number of links of weight \(s_r\). Thus, a coarse grained configuration for egonetworks is
+ \\( k_r \\), that is the number of links of weight \\( s_r \\). Thus, a coarse grained configuration for egonetworks is
 
 $$\{k_r\}=[k_1, k_2, k_3, k_4, k_5]$$
 
-(where k_1 is the number of links of weight \(s_1=5\), \(k_2\) is the number of links of weight \(s_2=4\), etc. Notice that the number of no-links, \(k_0\), is not included on the configuration as it can be recovered from \(k_0=N-\sum_r k_r\))
+(where k_1 is the number of links of weight \\( s_1=5 \\), \\( k_2 \\) is the number of links of weight \\( s_2=4 \\), etc. Notice that the number of no-links, \\( k_0 \\), is not included on the configuration as it can be recovered from \\( k_0=N-\sum_r k_r \\))
 
 - An analogous representation of the layer structure are the accumulated variables, also called **group sizes**:
 
 $$\{n_r\}=[n_1, n_2, n_3, n_4, n_5] \qquad\qquad n_r = \sum_{l=0}^r k_l$$
 
-- Finaly, the **macrostates** of the system are specified by the participants total degree, \(k\), and weight \(s\).
+- Finaly, the **macrostates** of the system are specified by the participants total degree, \\( k \\), and weight \\( s \\).
 
 $$k=\sum_r k_r \qquad \qquad s=\sum_s k_r s_r$$
 
@@ -131,7 +131,7 @@ print('Example of ego-network microstate:', egonets[0])
 *(there are 4 links of weight 5, 10 links of weight 4, 12 links of weight 3, etc)*
 
 
-#### Layer configurations: layer degrees \(k_r\) and layer group sizes \(n_r\)
+#### Layer configurations: layer degrees \\( k_r \\) and layer group sizes \\( n_r \\)
 
 ```python
 k_layers = np.zeros((5, N))
@@ -149,7 +149,7 @@ print('Example of layer configuration:\t k_r:', k_layers[:,0], '\tn_r:', n_layer
     Example of layer configuration:	 k_r: [  4.  10.  12.  14.  23.] 	n_r: [  4.  14.  26.  40.  63.]
 
 
-#### Macrostates: \((k,s)\)
+#### Macrostates: \\( (k,s) \\)
 
 ```python
 k_vec = [np.sum(k_layers[:,i]) for i in range(N)]
@@ -163,16 +163,16 @@ print('Example of k-s macrostate\tk=', k_vec[0], '\ts=', s_vec[0])
 
 ### 2- Model description and class definition for Wang-Landau sampling
 
-The grand-canonical ensemble for ego-networks is obtained as the Maximum Entropy probability distribution such that its average values \(\langle k\rangle$ and $\langle s \rangle\) are those observed in the data. Maximizing the entropy, \(S=-\sum_{k_r} D(\{k_r\})P(\{k_r\}) \ln [D(\{k_r\}) P(\{k_r\})]\), subject to the conditions
+The grand-canonical ensemble for ego-networks is obtained as the Maximum Entropy probability distribution such that its average values \\( \langle k\rangle$ and $\langle s \rangle \\) are those observed in the data. Maximizing the entropy, \\( S=-\sum_{k_r} D(\{k_r\})P(\{k_r\}) \ln [D(\{k_r\}) P(\{k_r\})] \\), subject to the conditions
 
 $$\langle k\rangle = \sum_{j=1}^N \left(\textstyle\sum_r k_r^{(j)} \right) P(\{k_r\})  \qquad\qquad
   \langle s\rangle = \sum_{j=1}^N \left(\textstyle\sum_r s_r k_r^{(j)} \right) P(\{k_r\})$$
   
-plus normalization, \(\sum_{k_r}P(\{k_r\})=1\), gives a Gibbs distribution
+plus normalization, \\( \sum_{k_r}P(\{k_r\})=1 \\), gives a Gibbs distribution
 
 $$  P(\{k_r\}) =  \frac{1}{Z} D(\{k_r\}) e^{\lambda k + \mu s} , $$
 
-where \(D(\{k_r\}=k!/\prod_r k_r!\) is the layer configuration degeneracy, that is, the number of different microstates with the same layer degrees \(\{k_r\}\). 
+where \\( D(\{k_r\}=k!/\prod_r k_r! \\) is the layer configuration degeneracy, that is, the number of different microstates with the same layer degrees \\( \{k_r\} \\). 
 
 ***
 
@@ -180,24 +180,24 @@ We want compute the **density of states** (DOS) in the macrostate space $k$-$s$ 
 
 $$P(k,s)=\sum_{\{k_r\}} P(\{k_r\}) \textstyle \delta(k-\sum_r k_r)\delta(s-\sum_r k_r s_r) =\displaystyle \frac{1}{Z} \rho(k,s)e^{\lambda k + \mu s} $$
 
-Here, \(\rho(k,s)\) is the *zero-temperature* density of states (0-DOS), that is, the total degeneracy of a given macrostate \(k\)-\(s\). The Wang-Landau is a Monte Carlo algorithm that allows us to compute \(\rho(k,s)\) adaptively by sampling the configuration space with probability \(1/\rho(k,s)\). Such a sampling procedure generates a flat histogram in the macrostate space. 
+Here, \\( \rho(k,s) \\) is the *zero-temperature* density of states (0-DOS), that is, the total degeneracy of a given macrostate \\( k \\)-\\( s \\). The Wang-Landau is a Monte Carlo algorithm that allows us to compute \\( \rho(k,s) \\) adaptively by sampling the configuration space with probability \\( 1/\rho(k,s) \\). Such a sampling procedure generates a flat histogram in the macrostate space. 
 
-In practice, we start with a uniform \(\rho_0(k,s)\) and an empty histogram \(h(k,s)\). We perform a random walk on the configuration (microstate) space and every iteration we update the 0-DOS and the histogram as follows.
+In practice, we start with a uniform \\( \rho_0(k,s) \\) and an empty histogram \\( h(k,s) \\). We perform a random walk on the configuration (microstate) space and every iteration we update the 0-DOS and the histogram as follows.
 
 $$\rho_i(k,s) = \rho_i(k,s) \cdot f_i$$
 $$h_i(k,s) = h_i(k,s) + 1$$
 
-Where \(f\) is a parameter larger than \(1\). During the first walk, we perform a long run and define the **valid** domain as those values of \(k\)-\(s\) that have been visited at least once. We then continue the walk, and check whether the histogram is sufficiently **flat** *(for instance, if at least 99% of the **valid** histogram entries are higher than $0.8\langle h \rangle$, where $\langle h \rangle$ is the histogram average)*.
+Where \\( f \\) is a parameter larger than \\( 1 \\). During the first walk, we perform a long run and define the **valid** domain as those values of \\( k \\)-\\( s \\) that have been visited at least once. We then continue the walk, and check whether the histogram is sufficiently **flat** *(for instance, if at least 99% of the **valid** histogram entries are higher than $0.8\langle h \rangle$, where $\langle h \rangle$ is the histogram average)*.
 
-If the histogram is sufficiently flat, we reset it, update the parameter \(f\) and start a new walk. The algorithm now should perform finer updates to the 0-DOS. Thus, the parameter \(f\) should decrease following a monotonically decreasing mapping such as 
+If the histogram is sufficiently flat, we reset it, update the parameter \\( f \\) and start a new walk. The algorithm now should perform finer updates to the 0-DOS. Thus, the parameter \\( f \\) should decrease following a monotonically decreasing mapping such as 
 
 $$\rho_{i+1} = \rho_{i}$$
 $$h_{i+1} = \text{const}$$ 
 $$f_{i+1} = \sqrt{f_i}$$
 
-After \(n\) rounds, the update parameter should be approximately 1. For instance, starting at   \(f_0=e^1\), after \(10\) rounds the update parameter is \(f_0^{1/2^{10}}\approx 1.001\).
+After \\( n \\) rounds, the update parameter should be approximately 1. For instance, starting at   \\( f_0=e^1 \\), after \\( 10 \\) rounds the update parameter is \\( f_0^{1/2^{10}}\approx 1.001 \\).
 
-Finally, we obtain the model's DOS, \(P(k,s)\) by reweighting \(\rho(k,s)\) with the Gibbs factor \(e^{\lambda k + \mu s}/Z\).
+Finally, we obtain the model's DOS, \\( P(k,s) \\) by reweighting \\( \rho(k,s) \\) with the Gibbs factor \\( e^{\lambda k + \mu s}/Z \\).
 
 ***
 
@@ -422,16 +422,16 @@ E.wang_landau(500000, 10, 0.95)
 
 ### 4- Visualization 
 
-Before plotting the DOS, we need to fit the grand-canonical ensemble to the RS dataset. Let us rename the fitting parameters \(x=e^{\lambda}\) and \(y=e^{\mu}\). Then, we can express the density of states as:
+Before plotting the DOS, we need to fit the grand-canonical ensemble to the RS dataset. Let us rename the fitting parameters \\( x=e^{\lambda} \\) and \\( y=e^{\mu} \\). Then, we can express the density of states as:
 
 $$P(k,s) \propto \rho(k,s) x^k y^s$$
 
-The fitted values of \(x\) and \(y\) are obtained with the saddle point equations.
+The fitted values of \\( x \\) and \\( y \\) are obtained with the saddle point equations.
 
 $$\langle k \rangle = \frac{N\sum_r x y^{s_r}}{1 + \sum_r x y^{s_r}} 
 \qquad\qquad  \langle s \rangle  = \frac{N\sum_r s_r x y^{s_r}}{1 + \sum_r x y^{s_r}} $$ 
 
-RS average values of \(\langle k \rangle= 73.63\) and \(\langle s \rangle = 145.45\) give \(x= 0.74\) and \(y=0.56\).
+RS average values of \\( \langle k \rangle= 73.63 \\) and \\( \langle s \rangle = 145.45 \\) give \\( x= 0.74 \\) and \\( y=0.56 \\).
 
 *(read the paper [here](https://arxiv.org/abs/1701.07428) for the specifics)*
 Now let's plot it!
@@ -477,7 +477,7 @@ ax.text(10, 200, r'$\ln\,P\,(k,s)$', fontsize=16)
 ![png](https://github.com/manu-jimenez/manu-jimenez.github.io/blob/master/_posts/output_16_2.png?raw=true)
 
 
-The green cross marks the $\langle k \rangle$ and $\langle s \rangle$ RS empirical averages and the red diamods represent the $84$ individual ego-networks. We have fitted the grand-canonical ensemble such that the expected $k$ and $s$ coincide with the empirical averages. The blue-shaded regions are the contour plot of the logarithmic density of states. Finally, the black lines delimit domain for the allowed configurations: $s\geq k$ and $s\leq 5k$.
+The green cross marks the \\( \langle k \rangle \\) and \\( \langle s \rangle \\) RS empirical averages and the red diamods represent the \\( 84 \\) individual ego-networks. We have fitted the grand-canonical ensemble such that the expected \\( k \\) and \\( s \\) coincide with the empirical averages. The blue-shaded regions are the contour plot of the logarithmic density of states. Finally, the black lines delimit domain for the allowed configurations: \\( s\geq k \\) and  \\( s\leq 5k \\).
 
 
 ## References
@@ -487,4 +487,3 @@ The green cross marks the $\langle k \rangle$ and $\langle s \rangle$ RS empiric
 [[2](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0151588)] *Are You Your Friends’ Friend? Poor Perception of Friendship Ties Limits the Ability to Promote Behavioral Change.* Almaatouq A, Radaelli L, Pentland A and Shmueli E. PLOS ONE 11(3), (2016).
 
 [[3](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.86.2050)] Fugao Wang and D. P. Landau (2001) *Efficient, Multiple-Range Random Walk Algorithm to Calculate the Density of States.* Phys. Rev. Lett. 86, 2050, (2001).
-
