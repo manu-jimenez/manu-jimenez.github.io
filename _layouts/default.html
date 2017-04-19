@@ -56,13 +56,19 @@
         <p class="copyright">{{ site.title | default: site.github.repository_name }} maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
         {% endif %}
         
-	<p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
-	<!-- I have added this -->
-    		<ul>
-        		<a href="mailto:manuel.jimenez@fisfun.uned.com">email</a>
-        		<a href="https://github.com/manu-jimenez/web">repo</a>
-		</ul>
-	<!-- I have added this -->
+	<!-- this is NEW -->
+	<p style="text-align:left;">
+		Published with <a href="https://pages.github.com">GitHub Pages</a>
+		<!-- Now horizontal space (flushright -->
+		<span style="float:right;">
+			<ul>
+        			<a href="mailto:manuel.jimenez@fisfun.uned.com">email</a>
+        			<a href="https://github.com/manu-jimenez/web">repo</a>
+			</ul>
+		</span>
+	</p>	      
+	<!-- end of NEW (substitute with first comment block from SCRAPS -->
+
       </footer>
     </div>
 
@@ -81,6 +87,17 @@
 
 
 <!-- SCRAPS -->
+{% comment %}
+	<!-- this was here before -->
+	<p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+	<!-- I have added this -->
+    		<ul>
+        		<a href="mailto:manuel.jimenez@fisfun.uned.com">email</a>
+        		<a href="https://github.com/manu-jimenez/web">repo</a>
+		</ul>
+	<!-- I have added this -->
+{% endcomment %}
+
 {% comment %}
     <!-- NAVIGATION BAR -->
     <div id="header_wrap" class="outer">
