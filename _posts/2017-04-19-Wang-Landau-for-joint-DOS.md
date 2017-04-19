@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Wang-Landau algorithm for joint density of states"
-date: 2017-01-25
+date: 2017-04-19
 ---
 
 
@@ -184,13 +184,13 @@ Here, \\( \rho(k,s) \\) is the *zero-temperature* density of states (0-DOS), tha
 
 In practice, we start with a uniform \\( \rho_0(k,s) \\) and an empty histogram \\( h(k,s) \\). We perform a random walk on the configuration (microstate) space and every iteration we update the 0-DOS and the histogram as follows.
 
-$$\rho_i(k,s) = \rho_i(k,s) \cdot f_i \qquad h_i(k,s) = h_i(k,s) + 1$$
+$$\rho_i(k,s) = \rho_i(k,s) \cdot f_i, \qquad\; h_i(k,s) = h_i(k,s) + 1$$
 
 Where \\( f \\) is a parameter larger than \\( 1 \\). During the first walk, we perform a long run and define the **valid** domain as those values of \\( k \\)-\\( s \\) that have been visited at least once. We then continue the walk, and check whether the histogram is sufficiently **flat** *(for instance, if at least 99% of the **valid** histogram entries are higher than \\( 0.8\langle h \rangle \\), where \\( \langle h \rangle \\) is the histogram average)*.
 
 If the histogram is sufficiently flat, we reset it, update the parameter \\( f \\) and start a new walk. The algorithm now should perform finer updates to the 0-DOS. Thus, the parameter \\( f \\) should decrease following a monotonically decreasing mapping. We have implemented the following update scheme: 
 
-$$f_{i+1} = \sqrt{f_i}  \qquad  \rho_{i+1} = \rho_{i} \qquad h_{i+1} = \text{const}$$
+$$f_{i+1} = \sqrt{f_i},  \qquad  \rho_{i+1}(k,s) = \rho_{i}(k,s), \qquad h_{i+1}(k,s) = 1$$
 
 After \\( n \\) rounds, the update parameter should be approximately 1. For instance, starting at   \\( f_0=e^1 \\), after \\( 10 \\) rounds the update parameter is \\( f_0^{0.5^{10}}\approx 1.001 \\).
 
@@ -201,7 +201,7 @@ Finally, we obtain the model's DOS, \\( P(k,s) \\) by reweighting \\( \rho(k,s) 
 Let us englobe the necessary functions for the algorithm on an object: `egonet`
 
 
-```python
+```
 class egonet(object):
     
     def __init__(self, N, f=np.exp(1), costs=[0,1,2,3,4,5]):
