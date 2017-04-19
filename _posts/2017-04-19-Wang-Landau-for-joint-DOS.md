@@ -106,7 +106,7 @@ $$\{n_r\}=[n_1, n_2, n_3, n_4, n_5] \qquad\qquad n_r = \sum_{l=0}^r k_l$$
 $$k=\sum_r k_r \qquad \qquad s=\sum_s k_r s_r$$
 
 
-#### Ego-networks (**microstates**):
+**Ego-networks (microstates):**
 
 
 ```python
@@ -129,7 +129,7 @@ print('Example of ego-network microstate:', egonets[0])
 *(there are 4 links of weight 5, 10 links of weight 4, 12 links of weight 3, etc)*
 
 
-#### Layer configurations: layer degrees, \\( k_r \\), and layer group sizes, \\( n_r \\):
+**Layer configurations: layer degrees, \\( k_r \\), and layer group sizes, \\( n_r \\):**
 
 ```python
 k_layers = np.zeros((5, N))
@@ -147,7 +147,7 @@ print('Example of layer configuration:\t k_r:', k_layers[:,0], '\tn_r:', n_layer
     Example of layer configuration:	 k_r: [  4.  10.  12.  14.  23.] 	n_r: [  4.  14.  26.  40.  63.]
 
 
-#### Macrostates: \\( (k,s) \\)
+**Macrostates, \\( (k,s) \\):**
 
 ```python
 k_vec = [np.sum(k_layers[:,i]) for i in range(N)]
