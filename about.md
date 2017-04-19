@@ -5,7 +5,7 @@ title: About
 
 This webpage was created by **Manuel Jiménez-Martín**, member of [Department of Fundamental Physics][fisfun], [UNED][uned].
 
-Built with [Jeckyll][jeckyll] and [GitHub pages][pages]. It uses a modified version of the [Slate][slate] theme. Math is rendered with [MathJax][mathjax].
+Built with [Jekyll][jekyll] and [GitHub pages][pages]. It uses a modified version of the [Slate][slate] theme. Math is rendered with [MathJax][mathjax].
 
 ## License
 
