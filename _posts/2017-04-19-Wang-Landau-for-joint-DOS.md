@@ -201,7 +201,7 @@ Finally, we obtain the model's DOS, \\( P(k,s) \\) by reweighting \\( \rho(k,s) 
 Let us englobe the necessary functions for the algorithm on an object: `egonet`
 
 
-```
+```python
 class egonet(object):
     
     def __init__(self, N, f=np.exp(1), costs=[0,1,2,3,4,5]):
