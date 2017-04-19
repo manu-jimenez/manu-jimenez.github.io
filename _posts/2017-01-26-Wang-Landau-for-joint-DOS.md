@@ -9,7 +9,6 @@ In this notebook I provide an implementation of a Wang-Landau algorithm for comp
 
 I will model the Reciprocity Survey (RS) dataset from [[2](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0151588)], by fitting it to the grand-canonical ensemble from [[1](https://arxiv.org/abs/1701.07428)].
 
-
 I will sample the configuration space with a Wang-Landau algorithm [[3](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.86.2050)] in order to compute the joint density of states in the macrostate space.
 
 ```python
@@ -28,7 +27,7 @@ from matplotlib import pyplot as plt
 
 We have fitted the grand-canonical ensemble to the Reciprocity Survey (RS) dataset. In this experiment, a total of $N = 84$ under-graduate students were asked to score their relationship with each of the other participants in a scale from 0 to 5, where 0 meant no-relationship, and 1 to 5 represented increasing degree of friendship. 
 
-We have considered the zero weight as a no-link of cost $0$. The remaining layers costs are $[s_5,s_4,s_3,s_2,s_1]=\{1,2,3,4,5\}$. Then, each participants ego-network is described by a vector whose elements are the weight of their reported relationship with the other participants (the network is directed). 
+\)We have considered the zero weight as a no-link of cost $0$. The remaining layers costs are \([s_5,s_4,s_3,s_2,s_1]=\{1,2,3,4,5\}$. Then, each participants ego-network is described by a vector whose elements are the weight of their reported relationship with the other participants (the network is directed). 
 
 Let us import the dataset, which I have downloaded to my folder ´~/Downloads´. Then, let us extract the corresponding layer configurations and macrostates. 
 
@@ -39,9 +38,6 @@ df = pd.read_csv(open('/home/mjimenez/Downloads/journal.pone.0151588.s002.CSV','
 df.drop(['expected_score'], axis=1, inplace=True)  
 df.head()
 ```
-
-
-
 
 <div>
 <table border="1" class="dataframe">
@@ -92,22 +88,22 @@ df.head()
 
 We can distinguish three deacreasingly detailed representations for the ego-networks:
 
-- The ego-networks are the **microstates** of the system. Six possible weights and $83$ participants make the number of microstates equal to $6^{83}$. 
+- The ego-networks are the **microstates** of the system. Six possible weights and \(83\) participants make the number of microstates equal to $6^{83}$. 
 
 $$\mathbf{s}_k = [\omega_1,\dots,\omega_{k-1},\omega_{k+1},\dots,\omega_N]\qquad \omega_j\in=[s_5,s_4,s_3,s_2,s_1]$$
 
 - The grand-canonical ensemble assigns the same probability to configurations with equal **layer degrees**,
- $k_r$, that is the number of links of weight $s_r$. Thus, a coarse grained configuration for egonetworks is
+ \(k_r\), that is the number of links of weight \(s_r\). Thus, a coarse grained configuration for egonetworks is
 
 $$\{k_r\}=[k_1, k_2, k_3, k_4, k_5]$$
 
-(where k_1 is the number of links of weight $s_1=5$, $k_2$ is the number of links of weight $s_2=4$, etc. Notice that the number of no-links, $k_0$, is not included on the configuration as it can be recovered from $k_0=N-\sum_r k_r$)
+(where k_1 is the number of links of weight \(s_1=5\), \(k_2\) is the number of links of weight \(s_2=4\), etc. Notice that the number of no-links, \(k_0\), is not included on the configuration as it can be recovered from \(k_0=N-\sum_r k_r\))
 
 - An analogous representation of the layer structure are the accumulated variables, also called **group sizes**:
 
 $$\{n_r\}=[n_1, n_2, n_3, n_4, n_5] \qquad\qquad n_r = \sum_{l=0}^r k_l$$
 
-- Finaly, the **macrostates** of the system are specified by the participants total degree, $k$, and weight $s$.
+- Finaly, the **macrostates** of the system are specified by the participants total degree, \(k\), and weight \(s\).
 
 $$k=\sum_r k_r \qquad \qquad s=\sum_s k_r s_r$$
 
@@ -132,11 +128,10 @@ print('Example of ego-network microstate:', egonets[0])
      0 4 1 2 3 2 3 3 1 0 0 1 1 3 0 1 1 1 0 1 4 1 2 0 2 1 0 4 4 0 4 1 3 5 0 1 3
      0 2 2 2 4 0 3 3 0]
 
-
-### Layer configurations: layer degrees $k_r$ and layer group sizes $n_r$
-
 *(there are 4 links of weight 5, 10 links of weight 4, 12 links of weight 3, etc)*
 
+
+### Layer configurations: layer degrees \(k_r\) and layer group sizes \(n_r\)
 
 ```python
 k_layers = np.zeros((5, N))
@@ -154,8 +149,7 @@ print('Example of layer configuration:\t k_r:', k_layers[:,0], '\tn_r:', n_layer
     Example of layer configuration:	 k_r: [  4.  10.  12.  14.  23.] 	n_r: [  4.  14.  26.  40.  63.]
 
 
-### Macrostates: $(k,s)$
-
+### Macrostates: \((k,s)\)
 
 ```python
 k_vec = [np.sum(k_layers[:,i]) for i in range(N)]
