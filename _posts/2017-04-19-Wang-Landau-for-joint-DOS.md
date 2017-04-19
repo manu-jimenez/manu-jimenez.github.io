@@ -7,7 +7,7 @@ date: 2017-04-19
 
 In this notebook I provide an implementation of a Wang-Landau algorithm for computing a bivariate joint density of states (DOS) in an integer valued configuration space.
 
-I will model the Reciprocity Survey (RS) dataset from [[2](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0151588)], by fitting it to the grand-canonical ensemble from [[1](https://arxiv.org/abs/1701.07428)].
+I will model the Reciprocity Survey (RS) dataset from [[2](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0151588)], by fitting it to the grand-canonical ensemble from [[1](https://arxiv.org/abs/1701.07428)]. 
 
 I will sample the configuration space with a Wang-Landau algorithm [[3](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.86.2050)] in order to compute the joint density of states in the macrostate space.
 
@@ -86,7 +86,7 @@ df.head()
 
 We can distinguish three deacreasingly detailed representations for the ego-networks:
 
-- The ego-networks are the **microstates** of the system. Six possible weights and \\( 83 \\) participants make the number of microstates equal to \\( 6^{83}$ \\). 
+- The ego-networks are the **microstates** of the system. Six possible weights and \\( 83 \\) participants make the number of microstates equal to \\( 6^{83} \\). 
 
 $$\mathbf{s}_k = [\omega_1,\dots,\omega_{k-1},\omega_{k+1},\dots,\omega_N]\qquad \omega_j\in=[s_5,s_4,s_3,s_2,s_1]$$
 
@@ -200,6 +200,8 @@ Finally, we obtain the model's DOS, \\( P(k,s) \\) by reweighting \\( \rho(k,s) 
 
 Let us englobe the necessary functions for the algorithm on an object: `egonet`
 
+> _**Citation:** The following code is free to be copied and modified. Please cite the original work when appropriate.
+ [[*A null model for Dunbar's circles*. Manuel Jiménez-Martín, Ignacio Tamarit, Javier Rodríguez-Laguna, Elka Korutcheva, (pre-print) arXiv:1701.07428, (2017).](https://arxiv.org/abs/1701.07428)]_
 
 ```python
 class egonet(object):
