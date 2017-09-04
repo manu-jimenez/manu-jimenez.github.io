@@ -1,4 +1,8 @@
-# Data-science setup 
+---
+layout: post
+title: "Data-science toolbox setup "
+date: 2017-09-04
+---
 
 In this post, I have written down some really simple instructions for setting up a working open-source data-science toolbox
 from scratch with **anaconda**. Instructions are for mac but it should be very similar for Linux.
